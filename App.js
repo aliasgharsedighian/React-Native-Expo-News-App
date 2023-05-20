@@ -1,19 +1,24 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from "react";
+import { useState, useEffect } from "react";
+import { Text, View } from "react-native";
+import HomeScreen from "./screens/HomeScreen";
 
-import HomeScreen from './screens/HomeScreen';
+function App() {
+  const [count, setCount] = useState(0);
 
-export default function App() {
+  useEffect(() => {
+    console.log("component mounted");
+    setTimeout(() => {
+      setCount((count) => count + 1);
+    }, 1000);
+  });
+
   return (
-    <View style={styles.container}>
-      <HomeScreen/>
+    <View>
+      <Text>Count: {count}</Text>
+      {/* <HomeScreen /> */}
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
+export default App;
